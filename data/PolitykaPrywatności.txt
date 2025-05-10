@@ -1,0 +1,99 @@
+Polityka Prywatności
+1. Postanowienia ogólne
+
+1.1. Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych przez firmę [Nazwa firmy], z siedzibą w [adres firmy], NIP: [numer NIP], REGON: [numer REGON], wpisaną do [rejestr działalności gospodarczej / KRS nr: …], dalej jako „Administrator”.
+
+1.2. Kontakt z Administratorem możliwy jest pod adresem e-mail: [adres e-mail] lub telefonicznie: [numer telefonu].
+2. Cele i podstawa przetwarzania danych
+
+Przetwarzamy dane osobowe w następujących celach:
+
+    Realizacja zamówień i obsługa klienta (art. 6 ust. 1 lit. b RODO),
+
+    Obsługa płatności i dostawy (art. 6 ust. 1 lit. b i f RODO),
+
+    Wystawianie dokumentów księgowych (art. 6 ust. 1 lit. c RODO),
+
+    Prowadzenie działań marketingowych, w tym newslettera (art. 6 ust. 1 lit. a i f RODO),
+
+    Obsługa reklamacji i zwrotów (art. 6 ust. 1 lit. b i c RODO),
+
+    Zapewnienie bezpieczeństwa serwisu (np. logi, adresy IP) (art. 6 ust. 1 lit. f RODO).
+
+3. Zakres przetwarzanych danych
+
+W zależności od celu, możemy przetwarzać:
+
+    imię i nazwisko,
+
+    adres dostawy,
+
+    adres e-mail,
+
+    numer telefonu,
+
+    dane do faktury (np. NIP),
+
+    dane logowania (adres IP, cookies).
+
+4. Odbiorcy danych
+
+Dane mogą być przekazywane:
+
+    firmom kurierskim i przewoźnikom,
+
+    operatorom płatności,
+
+    dostawcom oprogramowania sklepu internetowego,
+
+    podmiotom świadczącym usługi księgowe i IT,
+
+    organom publicznym – w przypadkach przewidzianych prawem.
+
+5. Pliki cookies i technologie śledzące
+
+5.1. Nasza strona internetowa korzysta z plików cookies w celu:
+
+    zapewnienia poprawnego działania serwisu,
+
+    analizy statystyk (np. Google Analytics),
+
+    działań marketingowych (np. remarketing w Google/Facebook).
+
+5.2. Użytkownik może zarządzać plikami cookies w ustawieniach swojej przeglądarki.
+6. Czas przechowywania danych
+
+Dane będą przechowywane:
+
+    przez czas trwania umowy oraz do 6 lat po jej zakończeniu (w celach podatkowych i archiwalnych),
+
+    do momentu wycofania zgody – w przypadku danych przetwarzanych na podstawie zgody,
+
+    do momentu wniesienia skutecznego sprzeciwu – w przypadku danych przetwarzanych na podstawie uzasadnionego interesu Administratora.
+
+7. Prawa użytkownika
+
+Użytkownikowi przysługują prawa:
+
+    dostępu do danych,
+
+    ich sprostowania,
+
+    usunięcia,
+
+    ograniczenia przetwarzania,
+
+    przenoszenia danych,
+
+    wniesienia sprzeciwu,
+
+    wycofania zgody (w dowolnym momencie),
+
+    złożenia skargi do Prezesa UODO.
+
+8. Dobrowolność podania danych
+
+Podanie danych jest dobrowolne, ale niezbędne do realizacji zamówienia, kontaktu z nami lub otrzymywania newslettera.
+9. Zmiany w Polityce Prywatności
+
+Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej Polityce Prywatności. Aktualna wersja zawsze będzie dostępna na naszej stronie internetowej.
