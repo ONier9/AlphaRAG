@@ -12,14 +12,16 @@ from llama_index.core.llms import ChatMessage
 from llama_index.core import PromptTemplate
 
 def initialize():
+
+    #Ustawienia dla modelu
     Settings.embed_model = OllamaEmbedding(model_name=RagConfigFile.EmbeddingModelName)
     Settings.llm = Ollama(
         model=RagConfigFile.ModelName,
         request_timeout=RagConfigFile.Timeout
     )
 
+    #Odczytywanie danych i przenoszenie ich do naszej bazy danych wektorowych - aktualnie dla naszego systemu działają tylko pliki tekstowe
     documents = SimpleDirectoryReader(input_dir=RagConfigFile.DataDirectory).load_data()
-    
     db = chromadb.PersistentClient(path=RagConfigFile.ChromaDirectory)    
     chroma_collection = db.get_or_create_collection(RagConfigFile.ChromaCollection)
 
@@ -34,8 +36,9 @@ def initialize():
                             chunk_overlap=RagConfigFile.ChunkOverlap)
                         ],
     )
-    query_engine = vector_index.as_query_engine(response_mode="refine", similarity_top_k=3)
 
+    #Tworzenie zapytań oraz ich poprawa za pomocą bazy danych
+    query_engine = vector_index.as_query_engine(response_mode="refine", similarity_top_k=3)
     
     qa_template = PromptTemplate(PromptTemplates.FirstPrompt)
     refine_template = PromptTemplate(PromptTemplates.RefinePrompt)
