@@ -16,13 +16,14 @@ Zasady odpowiedzi:
    - Informacje o firmie
 5. Jeśli kontekst NIE ZAWIERA odpowiedzi: "Nie posiadam tych informacji w bazie wiedzy"
 6. Maksymalna długość odpowiedzi: 3 zdania
+7. Przy odpowiadaniu na pytanie, nie powtarzaj pytania w swojej odpowiedzi.
 
 Pytanie: {query_str}
 Odpowiedź (kulturalna, zwięzła): """
 
 RefinePrompt = """
 Zasady ulepszania odpowiedzi:
-1. USUŃ metadane (ścieżki plików, źródła)
+1. USUŃ metadane (ścieżki plików, źródła, pierwotne pytanie)
 2. Zachowaj odpowiedź jeśli:
    - Jest merytoryczna
    - Dotyczy produktów/dostawy/polityk
