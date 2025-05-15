@@ -16,8 +16,8 @@ def initialize():
     #Ustawienia dla modelu
     Settings.embed_model = OllamaEmbedding(model_name=RagConfigFile.EmbeddingModelName)
     Settings.llm = Ollama(
-        model=RagConfigFile.ModelName,
-        request_timeout=RagConfigFile.Timeout
+        model=RagConfigFile.LLMModelName,
+        request_timeout=RagConfigFile.AIQueryTimeout
     )
 
     #Odczytywanie danych i przenoszenie ich do naszej bazy danych wektorowych - aktualnie dla naszego systemu działają tylko pliki tekstowe
@@ -32,8 +32,8 @@ def initialize():
         documents,
         storage_context=storage_context,
         transformations=[SentenceSplitter
-                            (chunk_size=RagConfigFile.ChunkSize, 
-                            chunk_overlap=RagConfigFile.ChunkOverlap)
+                            (chunk_size=RagConfigFile.DBChunkSize, 
+                            chunk_overlap=RagConfigFile.DBChunkOverlap)
                         ],
     )
 
