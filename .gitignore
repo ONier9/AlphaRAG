@@ -28,8 +28,6 @@ chroma_db/
 
 .streamlit/
 
-data/
-
 .dockerignore
 
 .DS_Store
