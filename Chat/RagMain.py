@@ -1,3 +1,4 @@
+__import__('pysqlite3')
 import PromptTemplates
 import chromadb
 import RagConfigFile
