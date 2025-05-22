@@ -1,0 +1,2 @@
+FROM SpeakLeash/bielik-7b-instruct-v0.1-gguf
+PARAMETER quantization Q2_K

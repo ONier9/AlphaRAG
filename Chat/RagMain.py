@@ -18,12 +18,18 @@ def initialize():
     Settings.embed_model = OllamaEmbedding(model_name=RagConfigFile.EmbeddingModelName)
     Settings.llm = Ollama(
         model=RagConfigFile.LLMModelName,
-        request_timeout=RagConfigFile.AIQueryTimeout
+        request_timeout=RagConfigFile.AIQueryTimeout,
+        num_ctx=RagConfigFile.AIContextSize
     )
 
     #Odczytywanie danych i przenoszenie ich do naszej bazy danych wektorowych - aktualnie dla naszego systemu działają tylko pliki tekstowe
     documents = SimpleDirectoryReader(input_dir=RagConfigFile.DataDirectory).load_data()
-    db = chromadb.PersistentClient(path=RagConfigFile.ChromaDirectory)    
+    db = chromadb.PersistentClient(
+        path=RagConfigFile.ChromaDirectory,
+        settings=chromadb.Settings
+            (
+            anonymized_telemetry=False,                        
+            allow_reset=False))    
     chroma_collection = db.get_or_create_collection(RagConfigFile.ChromaCollection)
 
     vector_store = ChromaVectorStore(chroma_collection=chroma_collection)

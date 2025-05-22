@@ -1,8 +1,9 @@
-DBChunkSize=400
-DBChunkOverlap=10
-AIQueryTimeout=120.0
+DBChunkSize = 350
+DBChunkOverlap = 25
+AIQueryTimeout=300.0
+AIContextSize = 1536  
 EmbeddingModelName="nomic-embed-text"
-LLMModelName="SpeakLeash/bielik-7b-instruct-v0.1-gguf:Q4_K_S"
+LLMModelName="allegro/herbert-base-cased"
 DataDirectory="./data/"
 ChromaDirectory="./chroma_db/rocm_docs"
 ChromaCollection="rocm_docs"

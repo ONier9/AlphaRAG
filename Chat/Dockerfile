@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.2.2-base-ubuntu22.04
+FROM ubuntu:22.04
 
 WORKDIR /app
 
@@ -10,9 +10,6 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://ollama.ai/install.sh | sh
-
-ENV PATH="/usr/local/cuda/bin:${PATH}"
-ENV LD_LIBRARY_PATH="/usr/local/cuda/lib64:${LD_LIBRARY_PATH}"
 
 COPY requirements.txt .
 COPY ollama-start.sh .
