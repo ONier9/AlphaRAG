@@ -1,4 +1,4 @@
-__import__('pysqlite3')
+  #__import__('pysqlite3')
 import PromptTemplates
 import chromadb
 import RagConfigFile
@@ -6,20 +6,26 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core import StorageContext
 from llama_index.vector_stores.chroma import ChromaVectorStore
-from llama_index.embeddings.ollama import OllamaEmbedding
-from llama_index.llms.ollama import Ollama
+from transformers import AutoTokenizer, AutoModel, pipeline
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.llms.huggingface import HuggingFaceLLM
 from llama_index.core import PromptTemplate
 from llama_index.core.llms import ChatMessage
 from llama_index.core import PromptTemplate
-
+from llama_index.core.postprocessor import LongContextReorder 
+from llama_index.core.postprocessor import SimilarityPostprocessor
+from transformers import AutoModel 
 def initialize():
 
     #Ustawienia dla modelu
-    Settings.embed_model = OllamaEmbedding(model_name=RagConfigFile.EmbeddingModelName)
-    Settings.llm = Ollama(
-        model=RagConfigFile.LLMModelName,
-        request_timeout=RagConfigFile.AIQueryTimeout,
-        num_ctx=RagConfigFile.AIContextSize
+    Settings.embed_model = HuggingFaceEmbedding(
+        model_name="allegro/herbert-base-cased"
+    )
+    Settings.llm = HuggingFaceLLM(
+        model_name="eryk-mazus/polka-1.1b-chat",
+        tokenizer_name="eryk-mazus/polka-1.1b-chat",
+        context_window=3000,     
+        max_new_tokens=500
     )
 
     #Odczytywanie danych i przenoszenie ich do naszej bazy danych wektorowych - aktualnie dla naszego systemu działają tylko pliki tekstowe
@@ -44,8 +50,13 @@ def initialize():
                         ],
     )
 
+    reorder = LongContextReorder()
+
     #Tworzenie zapytań oraz ich poprawa za pomocą bazy danych
-    query_engine = vector_index.as_query_engine(response_mode="refine", similarity_top_k=3)
+    query_engine = vector_index.as_query_engine(
+    response_mode="tree_summarize", 
+    similarity_top_k=2
+    )
     
     qa_template = PromptTemplate(PromptTemplates.FirstPrompt)
     refine_template = PromptTemplate(PromptTemplates.RefinePrompt)
@@ -57,4 +68,4 @@ def initialize():
         }
     )
     
-    return query_engine
+    return query_engine 

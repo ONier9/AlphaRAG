@@ -1,4 +1,4 @@
-__import__('pysqlite3')
+#__import__('pysqlite3')
 import streamlit as st
 import RagMain
 import time
