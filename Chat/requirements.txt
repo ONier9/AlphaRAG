@@ -1,4 +1,5 @@
-streamlit
+streamlitpip install --upgrade llama-index-core llama-index-vector-stores-chroma
+pysqlite3-binary
 llama-index
 transformers
 torch
@@ -6,10 +7,10 @@ sentence-transformers
 chromadb
 llama-index-llms-huggingface
 llama-index-llms-huggingface-api
+llama-index-core 
+llama-index-vector-stores-chroma
 llama-index-embeddings-huggingface
 sacremoses
 langchain
 langchain-community
 einops
-pysqlite3
-pysqlite3-binary

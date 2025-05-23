@@ -26,7 +26,7 @@ def initialize():
     Settings.llm = HuggingFaceLLM(
         model_name="eryk-mazus/polka-1.1b-chat",
         tokenizer_name="eryk-mazus/polka-1.1b-chat",
-        context_window=3000,     
+        context_window=2500,     
         max_new_tokens=100
     )
 
