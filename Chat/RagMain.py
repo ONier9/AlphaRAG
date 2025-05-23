@@ -1,4 +1,6 @@
-  #__import__('pysqlite3')
+import sys
+__import__('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import PromptTemplates
 import chromadb
 import RagConfigFile
@@ -25,7 +27,7 @@ def initialize():
         model_name="eryk-mazus/polka-1.1b-chat",
         tokenizer_name="eryk-mazus/polka-1.1b-chat",
         context_window=3000,     
-        max_new_tokens=500
+        max_new_tokens=100
     )
 
     #Odczytywanie danych i przenoszenie ich do naszej bazy danych wektorowych - aktualnie dla naszego systemu działają tylko pliki tekstowe
@@ -34,7 +36,7 @@ def initialize():
         path=RagConfigFile.ChromaDirectory,
         settings=chromadb.Settings
             (
-            anonymized_telemetry=False,                        
+            anonymized_telemetry=False,
             allow_reset=False))    
     chroma_collection = db.get_or_create_collection(RagConfigFile.ChromaCollection)
 
@@ -54,7 +56,7 @@ def initialize():
 
     #Tworzenie zapytań oraz ich poprawa za pomocą bazy danych
     query_engine = vector_index.as_query_engine(
-    response_mode="tree_summarize", 
+    response_mode="refine", 
     similarity_top_k=2
     )
     
