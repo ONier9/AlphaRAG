@@ -58,7 +58,7 @@ def initialize():
     #Tworzenie zapytań oraz ich poprawa za pomocą bazy danych
     query_engine = vector_index.as_query_engine(
     response_mode="refine", 
-    similarity_top_k=2
+    similarity_top_k=3
     )
     
     qa_template = PromptTemplate(PromptTemplates.FirstPrompt)
