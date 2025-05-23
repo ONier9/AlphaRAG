@@ -4,6 +4,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import PromptTemplates
 import chromadb
 import RagConfigFile
+import torch
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core import StorageContext
@@ -17,19 +18,22 @@ from llama_index.core import PromptTemplate
 from llama_index.core.postprocessor import LongContextReorder 
 from llama_index.core.postprocessor import SimilarityPostprocessor
 from transformers import AutoModel 
+import streamlit as st
+
+@st.cache_resource
 def initialize():
 
     #Ustawienia dla modelu
     Settings.embed_model = HuggingFaceEmbedding(
-        model_name="allegro/herbert-base-cased"
+            model_name="sdadas/mmlw-retrieval-roberta-base"
     )
     Settings.llm = HuggingFaceLLM(
         model_name="eryk-mazus/polka-1.1b-chat",
         tokenizer_name="eryk-mazus/polka-1.1b-chat",
-        context_window=2500,     
-        max_new_tokens=100
+        context_window=1024,
+        max_new_tokens=75,
+        device_map="cpu"
     )
-
     #Odczytywanie danych i przenoszenie ich do naszej bazy danych wektorowych - aktualnie dla naszego systemu działają tylko pliki tekstowe
     documents = SimpleDirectoryReader(input_dir=RagConfigFile.DataDirectory).load_data()
     db = chromadb.PersistentClient(
@@ -52,11 +56,9 @@ def initialize():
                         ],
     )
 
-    reorder = LongContextReorder()
-
     #Tworzenie zapytań oraz ich poprawa za pomocą bazy danych
     query_engine = vector_index.as_query_engine(
-    response_mode="refine", 
+    response_mode="compact", 
     similarity_top_k=2
     )
     
