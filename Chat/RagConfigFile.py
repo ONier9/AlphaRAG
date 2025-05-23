@@ -1,5 +1,5 @@
-DBChunkSize = 400  
-DBChunkOverlap = 75
+DBChunkSize = 350
+DBChunkOverlap = 80
 AIQueryTimeout=300.0
 AIContextSize = 1536  
 EmbeddingModelName="nomic-embed-text"
