@@ -20,16 +20,15 @@ from llama_index.core.postprocessor import SimilarityPostprocessor
 from transformers import AutoModel 
 import streamlit as st
 
-@st.cache_resource
 def initialize():
 
     #Ustawienia dla modelu
     Settings.embed_model = HuggingFaceEmbedding(
-            model_name="sdadas/mmlw-retrieval-roberta-base"
+            model_name="allegro/herbert-base-cased"
     )
     Settings.llm = HuggingFaceLLM(
-        model_name="eryk-mazus/polka-1.1b-chat",
-        tokenizer_name="eryk-mazus/polka-1.1b-chat",
+        model_name="speakleash/Bielik-1.5B-v3.0-Instruct",
+        tokenizer_name="speakleash/Bielik-1.5B-v3.0-Instruct",
         context_window=1024,
         max_new_tokens=75,
         device_map="cpu"

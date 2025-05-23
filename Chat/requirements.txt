@@ -1,4 +1,4 @@
-streamlitpip install --upgrade llama-index-core llama-index-vector-stores-chroma
+streamlit
 pysqlite3-binary
 llama-index
 transformers
