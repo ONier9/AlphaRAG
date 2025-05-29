@@ -5,7 +5,7 @@ llama-index-core>=0.12.38
 transformers>=4.40.0
 torch>=2.7.0
 sentence-transformers>=3.0.0
-
+chromadb==1.0.11
 llama-index-vector-stores-chroma>=0.1.7
 llama-index-embeddings-huggingface>=0.1.9
 llama-index-llms-llama-cpp>=0.4.0
