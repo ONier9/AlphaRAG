@@ -4,20 +4,12 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import PromptTemplates
 import chromadb
 import RagConfigFile
-import torch
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core import StorageContext
 from llama_index.vector_stores.chroma import ChromaVectorStore
-from transformers import AutoTokenizer, AutoModel, pipeline
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from llama_index.llms.huggingface import HuggingFaceLLM
 from llama_index.core import PromptTemplate
-from llama_index.core.llms import ChatMessage
-from llama_index.core import PromptTemplate
-from llama_index.core.postprocessor import LongContextReorder 
-from llama_index.core.postprocessor import SimilarityPostprocessor
-from transformers import AutoModel 
 import streamlit as st
 from llama_index.llms.llama_cpp import LlamaCPP 
 import re  

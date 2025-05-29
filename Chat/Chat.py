@@ -31,10 +31,11 @@ if prompt := st.chat_input("Wpisz swoje pytanie..."):
 
     with st.chat_message("assistant"):
         response_container = st.empty()
-        full_response = ""
-        query_engine = st.session_state.query_engine
-        response = query_engine.query(prompt)
-        full_response = response.response
-        response_container.markdown(full_response)
+        with st.spinner("Czekaj na odpowiedź...", show_time=True):
+            full_response = ""
+            query_engine = st.session_state.query_engine
+            response = query_engine.query(prompt)
+            full_response = response.response
+            response_container.markdown(full_response)
     
     st.session_state.messages.append({"role": "assistant", "content": full_response})
