@@ -3,8 +3,6 @@ __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import streamlit as st
 import RagMain
-import time
-from llama_index.core.llms import ChatMessage
 
 st.set_page_config(page_title="RagChat", page_icon="🤖")
 st.title("Rag Sample Chat")

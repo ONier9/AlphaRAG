@@ -12,7 +12,7 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core import PromptTemplate
 import streamlit as st
 from llama_index.llms.llama_cpp import LlamaCPP 
-import re  
+
 
 @st.cache_resource
 def initialize():
