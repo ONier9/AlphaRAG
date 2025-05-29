@@ -14,3 +14,4 @@ sacremoses
 langchain
 langchain-community
 einops
+protobuf==3.20.3
