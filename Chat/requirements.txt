@@ -2,7 +2,7 @@ streamlit==1.45.0
 pysqlite3-binary==0.5.4  
 llama-index-core==0.12.38
 transformers==4.40.0
-torch==2.3.0
+torch==2.7.0 
 sentence-transformers==3.0.0
 chromadb==0.5.0
 llama-index-llms-huggingface==0.1.10
