@@ -1,9 +1,0 @@
-DBChunkSize = 350
-DBChunkOverlap = 80
-AIQueryTimeout=300.0
-AIContextSize = 1536  
-EmbeddingModelName="nomic-embed-text"
-LLMModelName="allegro/herbert-base-cased"
-DataDirectory="./data/"
-ChromaDirectory="./chroma_db/rocm_docs"
-ChromaCollection="rocm_docs"

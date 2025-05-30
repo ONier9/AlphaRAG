@@ -4,6 +4,9 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import streamlit as st
 import RagMain
 
+
+# Krótki kod komunikatora za pomocą streamlit, głównie w celach prezentacyjnych 
+
 st.set_page_config(page_title="RagChat", page_icon="🤖")
 st.title("Rag Sample Chat")
 st.caption("Prosty System Rag")
@@ -14,7 +17,7 @@ if "query_engine" not in st.session_state:
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Cześć! Zadawaj mi pytania o dokumentację techniczną!"}
+        {"role": "assistant", "content": "Cześć! Zadawaj mi pytania o mojej firmie!"}
     ]
 
 for message in st.session_state.messages:
@@ -26,7 +29,7 @@ if prompt := st.chat_input("Wpisz swoje pytanie..."):
     
     with st.chat_message("user"):
         st.markdown(prompt)
-
+    # Tutaj warto zobaczyć jak dołączamy kod do naszego silnika 
     with st.chat_message("assistant"):
         response_container = st.empty()
         with st.spinner("Czekaj na odpowiedź...", show_time=True):
