@@ -1,12 +1,8 @@
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-import Chat.config_files.PromptTemplates as Prompt
-import Chat.config_files.DatabaseSettings as Database
-import Chat.config_files.ChunkSettings as Chunk
-import Chat.config_files.ModelSettings as Model
-import Chat.config_files.EmbedSettings as Embed
 import chromadb
+import RagConfigFile as Config
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core import StorageContext
@@ -17,17 +13,17 @@ import streamlit as st
 from llama_index.llms.llama_cpp import LlamaCPP 
 
 
-@st.cache_resource(show_spinner=False)
+@st.cache_resource
 def initialize():
 
     #Ustawienia dla modelu
  
     Settings.llm = LlamaCPP(
         model_url=None, 
-        model_path=Model.ModelPath,
-        temperature=Model.Temperature,
-        max_new_tokens=Model.MaxNewTokens,
-        context_window=Model.ContextWindow,
+        model_path=Config.ModelPath,
+        temperature=Config.Temperature,
+        max_new_tokens=Config.MaxNewTokens,
+        context_window=Config.ContextWindow,
         generate_kwargs={},
         model_kwargs={"n_gpu_layers": 0},
         verbose=False,
@@ -35,18 +31,18 @@ def initialize():
 
     # Ustawenia dla modelu tworzącego embedy
     Settings.embed_model = HuggingFaceEmbedding(
-            model_name=Embed.ModelName
+            model_name=Config.ModelName
         )
     # Odczytywanie danych i przenoszenie ich do naszej bazy danych wektorowych
     # Aktualnie dla naszego systemu działają tylko pliki tekstowe
-    documents = SimpleDirectoryReader(input_dir=Database.DataDirectory).load_data()
+    documents = SimpleDirectoryReader(input_dir=Config.DataDirectory).load_data()
     db = chromadb.PersistentClient(
-        path=Database.ChromaDirectory,
+        path=Config.ChromaDirectory,
         settings=chromadb.Settings
             (
             anonymized_telemetry=False,
             allow_reset=False))    
-    chroma_collection = db.get_or_create_collection(Database.ChromaCollection)
+    chroma_collection = db.get_or_create_collection(Config.ChromaCollection)
 
     vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
@@ -58,8 +54,8 @@ def initialize():
             documents,
             storage_context=storage_context,
             transformations=[SentenceSplitter
-                                (chunk_size=Chunk.DBChunkSize, 
-                                chunk_overlap=Chunk.DBChunkOverlap)
+                                (chunk_size=Config.DBChunkSize, 
+                                chunk_overlap=Config.DBChunkOverlap)
                             ],
         )
     else:
@@ -71,7 +67,7 @@ def initialize():
         similarity_top_k=1,
         )
         
-    qa_template = PromptTemplate(Prompt.FirstPrompt)
+    qa_template = PromptTemplate(Config.FirstPrompt)
 
     query_engine.update_prompts({
         "response_synthesizer:text_qa_template": qa_template
