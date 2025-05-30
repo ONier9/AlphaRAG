@@ -21,7 +21,7 @@ def initialize():
  
     Settings.llm = LlamaCPP(
         model_url=None, 
-        model_path="bielik-1.5b-v3.0-instruct-q4_k_m-imat.gguf",
+        model_path="/workspaces/AlphaRAG/Chat/bielik-1.5b-v3.0-instruct-q4_k_m-imat.gguf",
         temperature=0.7,
         max_new_tokens=200,
         context_window=2048,
