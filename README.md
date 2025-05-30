@@ -1,16 +1,12 @@
-System RAG działający za pomocą streamlit i Ollama, używający Bielik (wersja Mistral AI skupiona na języku polskim) jako swojego LLM. Jest to system bazowany na podstawie architektury mojego komputera, który poiada kartę nvidia, na której go testowałam przez co może mieć problemy z działaniem na innych systemach. Aby sprawdzić działanie systemu można dodać do /chat/data dodatkowe pliki tekstowe z informacjami dla chatbota.
+System RAG działający za pomocą streamlit, używający Bielik (wersja Mistral AI skupiona na języku polskim) jako swojego LLM. Jest to system bazowany na podstawie architektury github codespaces, co pozwala mu działać w podstawowej formie. Ma małe problemy z odpowiedziami.
 ![Przykładowa rozmowa z botem](ExampleChat.png)
 
 
 Aby włączyć poprawnie system należy użyć w folderze /chat
 ```
-./docker-startup.sh build
+pip install -r requirements.txt
 ```
-A następnie użyć, aby działało na CPU
+Aby włączyć poprawnie system należy użyć w folderze /chat
 ```
-./docker-startup.sh deploy
-```
-Lub użyć tego, aby działało na GPU.
-```
-./docker-startup.sh deploy-gpu
+streamlit run Chat.py
 ```
